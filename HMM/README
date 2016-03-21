@@ -1,0 +1,20 @@
+Steps to follow for mfcc file generation and concatenation : 
+
+* Put all the wav files for outs in a directory inputs/outs
+* Put all the wav files for fours in a directory inputs/fours
+* Put all the wav files for sixes in a directory inputs/sixes
+
+* Create a directory named outputs where the final outputs will be stored
+
+* Find the final concatenated file of all outs, fours and sixes mfcc here:
+	./training/concatenated_outs.txt
+	./training/concatenated_fours.txt
+	./training/concatenated_sixes.txt
+
+* Run 'train.py' to train the HMM. The trained model is saved in 'saved_hmms.p'
+* Run 'test.py' to test the files. These files should be present in 'testing' directory
+* The output of the testing will be present in 'test_output' directory
+* Run calculate_accuracy.py to compute the accuracy of the tested files (NOTE : The file name should contain the event it actually represents)
+
+
+*** To avoid all of the above steps, just create all the directories and run prep_for_hmm.sh ***
