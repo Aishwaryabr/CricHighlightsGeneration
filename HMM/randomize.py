@@ -27,18 +27,19 @@ if __name__ == '__main__':
 	try:
 		jsonfile = open(model_file_path, 'r')
 		initial_model = json.load(jsonfile)
-		print initial_model
 
-		randomize_prob('hmm', 'A', 'out')
-		randomize_prob('hmm', 'A', 'four')
-		randomize_prob('hmm', 'A', 'six')
-		randomize_prob('hmm', 'B', 'out')
-		randomize_prob('hmm', 'B', 'four')
-		randomize_prob('hmm', 'B', 'six')
+		transition_prob = initial_model['hmm']['A']
+		emission_prob = initial_model['hmm']['B']
+
+		for i in transition_prob:
+			randomize_prob('hmm', 'A', i)
+
+		for i in emission_prob:
+			randomize_prob('hmm', 'B', i)
+
 		randomize_prob('hmm', 'pi')
 
 		jsonfile.close()
-
 		print initial_model
 
 		with open(model_file_path, 'w') as jsonfile:
